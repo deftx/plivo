@@ -11,10 +11,8 @@ class PlivoServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->when(PlivoChannel::class)
-            ->needs(Plivo::class)
-            ->give(function () {
-                return new Plivo(config('services.plivo'));
-            });
+        $this->app->singleton(Plivo::class, function ($app) {
+            return new Plivo(config('services.plivo'));
+        });
     }
 }
