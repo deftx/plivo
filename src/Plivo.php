@@ -15,6 +15,9 @@ class Plivo extends PlivoRestApi
     /** @var string */
     protected $from;
 
+    /** @var string */
+    protected $webhookUrl;
+
     /**
      * Create a new Plivo RestAPI instance.
      *
@@ -26,6 +29,7 @@ class Plivo extends PlivoRestApi
         $this->auth_id = $config['auth_id'];
         $this->authToken = $config['auth_token'];
         $this->from = $config['from_number'];
+        $this->webhookUrl = $config['webhook_url'] ?? null;
 
         parent::__construct($this->auth_id, $this->authToken);
     }
@@ -38,5 +42,10 @@ class Plivo extends PlivoRestApi
     public function from()
     {
         return $this->from;
+    }
+
+    public function webhookUrl()
+    {
+        return $this->webhookUrl;
     }
 }

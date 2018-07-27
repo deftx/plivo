@@ -52,6 +52,7 @@ class PlivoChannel
             'src' => $message->from ?: $this->from,
             'dst' => $to,
             'text' => trim($message->content),
+            'url' => $this->plivo->webhookUrl()
         ]);
 
         if ($response['status'] !== 202) {
